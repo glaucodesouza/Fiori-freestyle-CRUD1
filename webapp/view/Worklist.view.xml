@@ -9,16 +9,18 @@
         headerPinnable="false"
         toggleHeaderOnTitleClick="false">
 
-        <semantic:titleHeading>
+        <semantic:titleHeading> 
             <Title
                 text="{i18n>worklistTitle}"
                 level="H2"/>
         </semantic:titleHeading>
 
-        <semantic:content>
+        <semantic:content> 
             <Table
                 id="table"
                 width="auto"
+                mode="MultiSelect"
+                delete="onDeletar"
                 items="{
                     path: '/Z270FREECRUD1Set',
                     sorter: {
@@ -29,6 +31,7 @@
                 noDataText="{worklistView>/tableNoDataText}"
                 busyIndicatorDelay="{worklistView>/tableBusyDelay}"
                 growing="true"
+                growingThreshold="10"
                 growingScrollToLoad="true"
                 updateFinished=".onUpdateFinished">
 
@@ -39,6 +42,8 @@
                             text="{worklistView>/worklistTableTitle}"
                             level="H3"/>
                         <ToolbarSpacer />
+                        <Button id="btnCriar"           text="Criar"            press="onCriar"         type="Emphasized"/>
+                        <Button id="btnDeletarMuitos"   text="Eliminar Vários"  press="onDeletarMuitos" type="Emphasized"/>
                         <SearchField
                             id="searchField"
                             tooltip="{i18n>worklistSearchTooltip}"
@@ -53,11 +58,23 @@
                 </headerToolbar>
 
                 <columns>
-                    <Column id="nameColumn">
-                        <Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
+                    <Column id="codigoColumn">
+                      <Text text="Código" id="codigoColumnLabel" />
                     </Column>
-                    <Column id="unitNumberColumn" hAlign="End">
-                        <Text text="{i18n>tableUnitNumberColumnTitle}" id="unitNumberColumnTitle"/>
+                    <Column id="descricaoColumn" hAlign="Left">
+                      <Text text="Produto" id="descricaoColumnLabel"/>
+                    </Column>
+                    <Column id="kwmengColumn" hAlign="End">
+                      <Text text="Quantidade" id="kwmengColumnLabel"/>
+                    </Column>
+                    <Column id="netprColumn" hAlign="End">
+                        <Text text="Preço Líquido" id="netprColumnLabel"/>
+                    </Column>
+                    <Column hAlign="End">
+                      <Text text="Aprovar Venda" />
+                    </Column>
+                        <Column hAlign="End">
+                      <Text text="Deletar" />
                     </Column>
                 </columns>
 
@@ -66,14 +83,20 @@
                         type="Navigation"
                         press=".onPress">
                         <cells>
-                            <ObjectIdentifier
-                                title="{Codigo}"/>
-                            <ObjectNumber
-                                number="{
-                                    path: 'Codigo',
-                                    formatter: '.formatter.numberUnit'
-                                }"
-                                unit="{Kwmeng}" />
+                            <ObjectIdentifier title="{Codigo}"/>
+                            <Text text="{Descricao}"/>
+                            <ObjectNumber number="{
+                                    path: 'Kwmeng',
+                                    formatter: '.formatter.Decimal'
+                                }" 
+                                unit="{Meins}" />
+                            <ObjectNumber number="{
+                                    path: 'Netpr',
+                                    formatter: '.formatter.currencyUnit'
+                                }" 
+                                unit="{Waerk}" />
+                            <Button icon="{= ${Aprovado} === true ? 'sap-icon://accept' : 'sap-icon://approve'}" press="onAprovarProduto" />
+                            <Button icon="sap-icon://delete"    press="onDeletar" />
                         </cells>
                     </ColumnListItem>
                 </items>
