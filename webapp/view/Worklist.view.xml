@@ -2,8 +2,13 @@
     controllerName="fiorifreestylecrud1.controller.Worklist"
     xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:semantic="sap.f.semantic">
-
+    xmlns:semantic="sap.f.semantic"
+    > <!-- 
+      xmlns:core="sap.ui.core"
+      core:require="{'sap/ui/model/odata/type/Time' }"
+      core:require="{
+        TimeType: 'sap/ui/model/odata/type/Time'
+      }"DateTimeType: 'sap/ui/model/odata/type/DateTime',... -->
     <semantic:SemanticPage
         id="page"
         headerPinnable="false"
@@ -70,6 +75,15 @@
                     <Column id="netprColumn" hAlign="End">
                         <Text text="Preço Líquido" id="netprColumnLabel"/>
                     </Column>
+
+                    <Column id="dataCadastroColumn" hAlign="End">
+                        <Text text="Data Cadastro" id="dataCadastroLabel"/>
+                    </Column>
+
+                    <Column id="horaCadastroColumn" hAlign="End">
+                        <Text text="Hora Cadastro" id="horaCadastroLabel"/>
+                    </Column>
+
                     <Column hAlign="End">
                       <Text text="Aprovar Venda" />
                     </Column>
@@ -80,7 +94,7 @@
 
                 <items>
                     <ColumnListItem
-                        type="Navigation"
+                        type="Navigation" 
                         press=".onPress">
                         <cells>
                             <ObjectIdentifier title="{Codigo}"/>
@@ -95,6 +109,23 @@
                                     formatter: '.formatter.currencyUnit'
                                 }" 
                                 unit="{Waerk}" />
+
+                            <ObjectIdentifier title="{
+                              path: 'DataCadastro',
+                              type: 'sap.ui.model.type.Date',
+                              formatOptions: {
+                                style: 'short',
+                                UTC: true
+                              }
+                            }" />
+                            <ObjectIdentifier title="{
+                              path: 'HoraCadastro',
+                              type: 'sap.ui.model.odata.type.Time',
+                              formatOptions: {
+                                style: 'short',
+                                pattern: 'HH:MM'
+                              }
+                            }" />
                             <Button icon="{= ${Aprovado} === true ? 'sap-icon://accept' : 'sap-icon://approve'}" press="onAprovarProduto" />
                             <Button icon="sap-icon://delete"    press="onDeletar" />
                         </cells>
