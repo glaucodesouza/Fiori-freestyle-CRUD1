@@ -95,25 +95,23 @@
                         press=".onPress">
                         <cells>
                             <ObjectIdentifier title="{Codigo}"/>
-                            <Text text="{Descricao}"
-                            />
+                            <Text text="{Descricao}"/>
                             <ObjectNumber 
+                            type='sap/ui/model/type/Decimal'
                               number="{Kwmeng}"
                               unit="{Meins}"
                               state="{
                                 parts: [
                                   {path: 'Kwmeng'}
                                 ],
-                                formatter: '.formatter.formatarQtde'
+                                formatter: '.formatter.formatarValor'
                               }"
                               />
-                            <ObjectNumber 
-                              number="{
+                            <ObjectNumber number="{
                                 path: 'Netpr',
-                                formatter: '.formatter.formatarFloat'
+                                formatter: '.formatter.currencyUnit'
                               }" 
-                                unit="{Waerk}"
-                            />
+                                unit="{Waerk}" />
                             <ObjectIdentifier title="{
                               path: 'DataCadastro',
                               type: 'sap.ui.model.type.Date',

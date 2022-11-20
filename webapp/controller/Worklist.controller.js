@@ -113,6 +113,28 @@ sap.ui.define(
         }
       },
 
+      onAprovarProduto: function (oEvent) {
+        var oSource = oEvent.getSource();
+        var oParent = oSource.getParent();
+        var bc = oParent.getBindingContext();
+        var path = bc.getPath();
+        var obj = bc.getObject();
+        var oModel = this.getView().getModel();
+
+        oModel.callFunction("/aprovar_produto", {
+          method: "GET",
+          urlParameters: {
+            Codigo: obj.Codigo,
+          },
+          success: function () {
+            sap.m.MessageToast.show("Produto aprovado com sucesso !");
+          }.bind(this),
+          error: function (e) {
+            console.error(e);
+          }.bind(this),
+        });
+      },
+
       /* =========================================================== */
       /* event handlers                                              */
       /* =========================================================== */
