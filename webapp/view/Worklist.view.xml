@@ -76,16 +76,15 @@
                     <Column id="dataCadastroColumn" hAlign="End">
                         <Text text="Data Cadastro" id="dataCadastroLabel"/>
                     </Column>
-
                     <Column id="horaCadastroColumn" hAlign="End">
                         <Text text="Hora Cadastro" id="horaCadastroLabel"/>
                     </Column>
 
-                    <Column hAlign="End">
-                      <Button icon="{= ${Aprovado} === true ? 'sap-icon://accept' : 'sap-icon://approve'}" press="onAprovarProduto" />
+                    <Column id="AprovaCadastroColumn" hAlign="End">
+                      <Text text-="Aprovado" id="idAprovaCadastroColumn" />
                     </Column>
-                        <Column hAlign="End">
-                      <Text text="Deletar" />
+                    <Column id="DeletarCadastroColumn" hAlign="End">
+                      <Text text="Deletar" id="idDeletarCadastroColumn"/>
                     </Column>
                 </columns>
 
@@ -131,16 +130,22 @@
                               }
                             }" />
                             <Button icon="{= ${Aprovado} === true ? 'sap-icon://accept' : 'sap-icon://approve'}" press="onAprovarProduto" />
-                            <Button icon="sap-icon://delete"    press="onDeletar" />
+                            <Button icon="sap-icon://delete" press="onDeletar" />
                         </cells>
                     </ColumnListItem>
                 </items>
             </Table>
         </semantic:content>
 
-        <semantic:sendEmailAction>
-            <semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
-        </semantic:sendEmailAction>
+		<semantic:footerCustomActions>
+			<Button 
+			icon="sap-icon://alert"
+			text="{= ${messagez>/}.length }"
+			visible="{= ${messagez>/}.length > 0 }"
+			type="Emphasized"
+			press="onMessagePopoverPress"
+			></Button>
+		</semantic:footerCustomActions>
 
     </semantic:SemanticPage>
 

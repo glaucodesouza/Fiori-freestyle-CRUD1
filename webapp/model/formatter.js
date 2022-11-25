@@ -16,7 +16,6 @@ sap.ui.define(["sap/ui/core/format/NumberFormat"], function (NumberFormat) {
     // },
 
     formatarFloat: function (iv_valor) {
-      debugger;
       var oFloatNumberFormat = NumberFormat.getFloatInstance(
         {
           maxFractionDigits: 2,
@@ -25,11 +24,9 @@ sap.ui.define(["sap/ui/core/format/NumberFormat"], function (NumberFormat) {
         },
         sap.ui.getCore().getConfiguration().getLocale()
       );
-      debugger;
       return oFloatNumberFormat.format(iv_valor);
     },
     formatarQtde: function (iv_valor) {
-      debugger;
       // if the value of fMeasure is not a number, no status will be set
       if (isNaN(iv_valor)) {
         return "";

@@ -72,7 +72,11 @@
       "": {
         "dataSource": "mainService",
         "preload": true,
-        "settings": {}
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "refreshAfterChange": true
+        }
       }
     },
     "resources": {
@@ -101,11 +105,16 @@
           ]
         },
         {
-          "pattern": "Z270FREECRUD1Set/{objectId}",
+          "pattern": "Produto/{objectId}",
           "name": "object",
           "target": [
             "object"
           ]
+        },
+        {
+          "pattern": "create",
+          "name": "create",
+          "target": "create"
         }
       ],
       "targets": {
@@ -128,6 +137,11 @@
         "notFound": {
           "viewName": "NotFound",
           "viewId": "notFound"
+        },
+        "create": {
+          "viewId": "create",
+          "viewName": "Create",
+          "viewLevel": 2
         }
       }
     },
