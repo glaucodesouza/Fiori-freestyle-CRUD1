@@ -1,47 +1,51 @@
 <mvc:View
   controllerName="fiorifreestylecrud1.controller.Create"
-	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:f="sap.ui.layout.form"
-	xmlns:core="sap.ui.core">
+  xmlns="sap.m"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:core="sap.ui.core"
+>
 	<Page
-        title="Criar Novo Produto"
-        showNavButton="true"
-        navButtonPress=".onNavBack"
-        floatingFooter="true">
+    title="Criar Novo Produto"
+    showNavButton="true"
+    navButtonPress=".onNavBack"
+    floatingFooter="true"
+  >
         <f:SimpleForm
-            editable="true"
-            layout="ResponsiveGridLayout"
-            title="Produto"
-            labelSpanXL="3"
-            labelSpanL="3"
-            labelSpanM="3"
-            labelSpanS="12"
-            adjustLabelSpan="false"
-            emptySpanXL="4"
-            emptySpanL="4"
-            emptySpanM="4"
-            emptySpanS="0"
-            columnsXL="1"
-            columnsL="1"
-            columnsM="1"
-            singleContainerFullSize="false"
-            >
+      editable="true"
+      layout="ResponsiveGridLayout"
+      title="Produto"
+      labelSpanXL="3"
+      labelSpanL="3"
+      labelSpanM="3"
+      labelSpanS="12"
+      adjustLabelSpan="false"
+      emptySpanXL="4"
+      emptySpanL="4"
+      emptySpanM="4"
+      emptySpanS="0"
+      columnsXL="1"
+      columnsL="1"
+      columnsM="1"
+      singleContainerFullSize="false"
+    >
                 <Label text="Codigo" />         
-                <Text id="inpCodigo"         
-                        text="{
+                <Text
+        id="inpCodigo"
+        text="{
                             path: 'view>/Codigo',
                             type: 'sap.ui.model.type.Integer',
                             constraints:{
                                 minimum:0
                             }
                         }"
-                    />
-                <Label text="Descricao" />      <Input id="inpDescricao"/>
+      />
+                <Label text="Descricao" />      <Input id="inpDescricao" />
                 
                 <Label text="Quantidade" />     
-                <Input  id="inpKwmeng"       
-                        value="{
+                <Input
+        id="inpKwmeng"
+        value="{
                             path: 'view>/Kwmeng',
                             type: 'sap.ui.model.type.Float',
                             formatOptions:{
@@ -54,14 +58,15 @@
                                 scale:3
                             }
                         }"
-                />
+      />
                 
                 <Label text="UM" />             
-                <Input id="inpMeins"/>
+                <Input id="inpMeins" />
                 
                 <Label text="Preço Unitário" /> 
-                <Input id="inpNetpr"       
-                        value="{
+                <Input
+        id="inpNetpr"
+        value="{
                             path: 'view>/Netpr',
                             type: 'sap.ui.model.type.Float',
                             formatOptions:{
@@ -74,17 +79,41 @@
                                 scale:3
                             }
                         }"
-                    />
+      />
 
-                <Label text="Moeda" />          <Input id="inpWaerk"        />
+                <Label text="Moeda" />          
+                <Input id="inpWaerk" />
+
+        <Label text="Data Modificação" /> 
+        <DatePicker
+        value="{
+                            path: 'DataCadastro', 
+                            type: 'sap.ui.model.type.Date',
+                            formatOptions: {
+                                pattern: 'dd/MM/yyyy' ,
+                                UTC: true }
+                      }"
+        id="inpDataCadastro"
+      /> 
+        <Label text="Hora Modificação" /> 
+        <Input
+        value="{
+                    path: 'HoraCadastro',
+                    type: 'sap.ui.model.type.Time',
+                      formatOptions: {
+                        style: 'short'
+                      }
+                  }"
+        id="inpHoraCadastro"
+      />
 
         </f:SimpleForm>
 
         <footer>
             <OverflowToolbar>
-                <ToolbarSpacer/>
-                <Button type="Accept" text="Gravar"     press="onGravar" />
-                <Button type="Reject" text="Cancelar"   press="onCancelar "/>
+                <ToolbarSpacer />
+                <Button type="Accept" text="Gravar" press="onGravar" />
+                <Button type="Reject" text="Cancelar" press="onCancelar " />
             </OverflowToolbar>
         </footer>
   </Page> 

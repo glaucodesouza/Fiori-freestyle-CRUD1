@@ -1,28 +1,140 @@
-<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+<?xml version="1.0" encoding="utf-8" ?>
+<edmx:Edmx
+  Version="1.0"
+  xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+  xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+  xmlns:sap="http://www.sap.com/Protocols/SAPData"
+>
     <edmx:DataServices m:DataServiceVersion="2.0">
-        <Schema Namespace="Z270FREECRUD1_SRV" xml:lang="pt" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <Schema
+      Namespace="Z270FREECRUD1_SRV"
+      xml:lang="pt"
+      sap:schema-version="1"
+      xmlns="http://schemas.microsoft.com/ado/2008/09/edm"
+    >
             <EntityType Name="Z270FREECRUD1" sap:content-version="1">
                 <Key>
-                    <PropertyRef Name="Codigo"/>
-                </Key>
-                <Property Name="Codigo" Type="Edm.Int16" Nullable="false" sap:unicode="false" sap:label="Codigo" sap:filterable="false"/>
-                <Property Name="Descricao" Type="Edm.String" MaxLength="75" sap:unicode="false" sap:label="Descricao" sap:filterable="false"/>
-                <Property Name="Kwmeng" Type="Edm.Decimal" Precision="15" Scale="3" sap:unicode="false" sap:unit="Meins" sap:label="QtdOrdemAcum." sap:filterable="false"/>
-                <Property Name="Meins" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="UM básica" sap:filterable="false" sap:semantics="unit-of-measure"/>
-                <Property Name="Netpr" Type="Edm.Decimal" Precision="12" Scale="3" sap:unicode="false" sap:unit="Waerk" sap:label="Preço líquido" sap:filterable="false"/>
-                <Property Name="Waerk" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="Moeda documento" sap:filterable="false" sap:semantics="currency-code"/>
-                <Property Name="DataCadastro" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Data Cadastro" sap:filterable="false"/>
-                <Property Name="HoraCadastro" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Hora Cadastro" sap:filterable="false"/>
-                <Property Name="Aprovado" Type="Edm.Boolean" sap:unicode="false" sap:label="Aprovado para venda" sap:filterable="false"/>
-                <Property Name="DataAprovado" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Data Aprovado" sap:filterable="false"/>
-                <Property Name="HoraAprovado" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Hora Aprovado" sap:filterable="false"/>
+                    <PropertyRef Name="Codigo" />
+                </Key> 
+                <Property
+          Name="Codigo"
+          Type="Edm.Int16"
+          Nullable="false"
+          sap:unicode="false"
+          sap:label="Codigo"
+          sap:filterable="false"
+        />
+                <Property
+          Name="Descricao"
+          Type="Edm.String"
+          MaxLength="75"
+          sap:unicode="false"
+          sap:label="Descricao"
+          sap:filterable="false"
+        />
+                <Property
+          Name="Kwmeng"
+          Type="Edm.Decimal"
+          Precision="15"
+          Scale="3"
+          sap:unicode="false"
+          sap:unit="Meins"
+          sap:label="QtdOrdemAcum."
+          sap:filterable="false"
+        />
+                <Property
+          Name="Meins"
+          Type="Edm.String"
+          MaxLength="3"
+          sap:unicode="false"
+          sap:label="UM básica"
+          sap:filterable="false"
+          sap:semantics="unit-of-measure"
+        />
+                <Property
+          Name="Netpr"
+          Type="Edm.Decimal"
+          Precision="12"
+          Scale="3"
+          sap:unicode="false"
+          sap:unit="Waerk"
+          sap:label="Preço líquido"
+          sap:filterable="false"
+        />
+                <Property
+          Name="Waerk"
+          Type="Edm.String"
+          MaxLength="5"
+          sap:unicode="false"
+          sap:label="Moeda documento"
+          sap:filterable="false"
+          sap:semantics="currency-code"
+        />
+                <Property
+          Name="DataCadastro"
+          Type="Edm.DateTime"
+          Precision="7"
+          sap:unicode="false"
+          sap:label="Data Cadastro"
+          sap:filterable="false"
+        />
+                <Property
+          Name="HoraCadastro"
+          Type="Edm.Time"
+          Precision="0"
+          sap:unicode="false"
+          sap:label="Hora Cadastro"
+          sap:filterable="false"
+        />
+                <Property
+          Name="Aprovado"
+          Type="Edm.Boolean"
+          sap:unicode="false"
+          sap:label="Aprovado para venda"
+          sap:filterable="false"
+        />
+                <Property
+          Name="DataAprovado"
+          Type="Edm.DateTime"
+          Precision="7"
+          sap:unicode="false"
+          sap:label="Data Aprovado"
+          sap:filterable="false"
+        />
+                <Property
+          Name="HoraAprovado"
+          Type="Edm.Time"
+          Precision="0"
+          sap:unicode="false"
+          sap:label="Hora Aprovado"
+          sap:filterable="false"
+        />
             </EntityType>
-            <EntityContainer Name="Z270FREECRUD1_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
-                <EntitySet Name="Z270FREECRUD1Set" EntityType="Z270FREECRUD1_SRV.Z270FREECRUD1" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+            <EntityContainer
+        Name="Z270FREECRUD1_SRV_Entities"
+        m:IsDefaultEntityContainer="true"
+        sap:supported-formats="atom json xlsx"
+      >
+                <EntitySet
+          Name="Z270FREECRUD1Set"
+          EntityType="Z270FREECRUD1_SRV.Z270FREECRUD1"
+          sap:creatable="false"
+          sap:updatable="false"
+          sap:deletable="false"
+          sap:pageable="false"
+          sap:content-version="1"
+        />
             </EntityContainer>
-            <atom:link rel="self" href="https://lnl-s4h.opustech.com.br:5200/sap/opu/odata/sap/Z270FREECRUD1_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
-            <atom:link rel="latest-version" href="https://lnl-s4h.opustech.com.br:5200/sap/opu/odata/sap/Z270FREECRUD1_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link
+        rel="self"
+        href="https://lnl-s4h.opustech.com.br:5200/sap/opu/odata/sap/Z270FREECRUD1_SRV/$metadata"
+        xmlns:atom="http://www.w3.org/2005/Atom"
+      />
+            <atom:link
+        rel="latest-version"
+        href="https://lnl-s4h.opustech.com.br:5200/sap/opu/odata/sap/Z270FREECRUD1_SRV/$metadata"
+        xmlns:atom="http://www.w3.org/2005/Atom"
+      />
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>
