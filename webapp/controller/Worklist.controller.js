@@ -1,11 +1,5 @@
 sap.ui.define(
-  [
-    "./BaseController",
-    "sap/ui/model/json/JSONModel",
-    "../model/formatter",
-    "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator",
-  ],
+  ["./BaseController", "sap/ui/model/json/JSONModel", "../model/formatter", "sap/ui/model/Filter", "sap/ui/model/FilterOperator"],
   function (BaseController, JSONModel, formatter, Filter, FilterOperator) {
     "use strict";
 
@@ -22,21 +16,15 @@ sap.ui.define(
        */
       onInit: function () {
         var oViewModel;
-
+        // debugger;
         // keeps the search state
         this._aTableSearchState = [];
 
         // Model used to manipulate control states
         oViewModel = new JSONModel({
-          worklistTableTitle:
-            this.getResourceBundle().getText("worklistTableTitle"),
-          shareSendEmailSubject: this.getResourceBundle().getText(
-            "shareSendEmailWorklistSubject"
-          ),
-          shareSendEmailMessage: this.getResourceBundle().getText(
-            "shareSendEmailWorklistMessage",
-            [location.href]
-          ),
+          worklistTableTitle: this.getResourceBundle().getText("worklistTableTitle"),
+          shareSendEmailSubject: this.getResourceBundle().getText("shareSendEmailWorklistSubject"),
+          shareSendEmailMessage: this.getResourceBundle().getText("shareSendEmailWorklistMessage", [location.href]),
           tableNoDataText: this.getResourceBundle().getText("tableNoDataText"),
         });
         this.setModel(oViewModel, "worklistView");
@@ -156,16 +144,11 @@ sap.ui.define(
         // only update the counter if the length is final and
         // the table is not empty
         if (iTotalItems && oTable.getBinding("items").isLengthFinal()) {
-          sTitle = this.getResourceBundle().getText("worklistTableTitleCount", [
-            iTotalItems,
-          ]);
+          sTitle = this.getResourceBundle().getText("worklistTableTitleCount", [iTotalItems]);
         } else {
           sTitle = this.getResourceBundle().getText("worklistTableTitle");
         }
-        this.getModel("worklistView").setProperty(
-          "/worklistTableTitle",
-          sTitle
-        );
+        this.getModel("worklistView").setProperty("/worklistTableTitle", sTitle);
       },
 
       /**
@@ -200,9 +183,7 @@ sap.ui.define(
           var sQuery = oEvent.getParameter("query");
 
           if (sQuery && sQuery.length > 0) {
-            aTableSearchState = [
-              new Filter("Codigo", FilterOperator.Contains, sQuery),
-            ];
+            aTableSearchState = [new Filter("Codigo", FilterOperator.Contains, sQuery)];
           }
           this._applySearch(aTableSearchState);
         }
@@ -229,10 +210,7 @@ sap.ui.define(
        */
       _showObject: function (oItem) {
         this.getRouter().navTo("object", {
-          objectId: oItem
-            .getBindingContext()
-            .getPath()
-            .substring("/Z270FREECRUD1Set".length),
+          objectId: oItem.getBindingContext().getPath().substring("/Z270FREECRUD1Set".length),
         });
       },
 
@@ -247,10 +225,7 @@ sap.ui.define(
         oTable.getBinding("items").filter(aTableSearchState, "Application");
         // changes the noDataText of the list in case there are no filter results
         if (aTableSearchState.length !== 0) {
-          oViewModel.setProperty(
-            "/tableNoDataText",
-            this.getResourceBundle().getText("worklistNoDataWithSearchText")
-          );
+          oViewModel.setProperty("/tableNoDataText", this.getResourceBundle().getText("worklistNoDataWithSearchText"));
         }
       },
     });

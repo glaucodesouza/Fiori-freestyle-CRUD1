@@ -1,59 +1,71 @@
 <mvc:View
-    controllerName="fiorifreestylecrud1.controller.Worklist"
-    xmlns="sap.m"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns:semantic="sap.f.semantic"
-
-    >
+  controllerName="fiorifreestylecrud1.controller.Worklist"
+  xmlns="sap.m"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:semantic="sap.f.semantic"
+>
     <!-- core:require="{Decimal: 'sap/ui/model/type/Decimal'}" -->
     <semantic:SemanticPage
-        id="page"
-        headerPinnable="false"
-        toggleHeaderOnTitleClick="false">
+    id="page"
+    headerPinnable="false"
+    toggleHeaderOnTitleClick="false"
+  >
 
         <semantic:titleHeading> 
-            <Title
-                text="{i18n>worklistTitle}"
-                level="H2"/>
+            <Title text="{i18n>worklistTitle}" level="H2" />
         </semantic:titleHeading>
 
         <semantic:content> 
             <Table
-                id="table"
-                width="auto"
-                mode="MultiSelect"
-                delete="onDeletar"
-                items="{
+        id="table"
+        width="auto"
+        mode="MultiSelect"
+        delete="onDeletar"
+        items="{
                     path: '/Z270FREECRUD1Set',
                     sorter: {
                         path: 'Codigo',
                         descending: false
                     }
                 }"
-                noDataText="{worklistView>/tableNoDataText}"
-                busyIndicatorDelay="{worklistView>/tableBusyDelay}"
-                growing="true"
-                growingThreshold="10"
-                growingScrollToLoad="true"
-                updateFinished=".onUpdateFinished">
+        noDataText="{worklistView>/tableNoDataText}"
+        busyIndicatorDelay="{worklistView>/tableBusyDelay}"
+        growing="true"
+        growingThreshold="10"
+        growingScrollToLoad="true"
+        updateFinished=".onUpdateFinished"
+      >
 
                 <headerToolbar>
                     <OverflowToolbar>
                         <Title
-                            id="tableHeader"
-                            text="{worklistView>/worklistTableTitle}"
-                            level="H3"/>
+              id="tableHeader"
+              text="{worklistView>/worklistTableTitle}"
+              level="H3"
+            />
                         <ToolbarSpacer />
-                        <Button id="btnCriar"           text="Criar"            press="onCriar"         type="Emphasized"/>
-                        <Button id="btnDeletarMuitos"   text="Eliminar Vários"  press="onDeletarMuitos" type="Emphasized"/>
+                        <Button
+              id="btnCriar"
+              text="Criar"
+              press="onCriar"
+              type="Emphasized"
+            />
+                        <Button
+              id="btnDeletarMuitos"
+              text="Eliminar Vários"
+              press="onDeletarMuitos"
+              type="Emphasized"
+            />
                         <SearchField
-                            id="searchField"
-                            tooltip="{i18n>worklistSearchTooltip}"
-                            search=".onSearch">
+              id="searchField"
+              tooltip="{i18n>worklistSearchTooltip}"
+              search=".onSearch"
+            >
                             <layoutData>
                                 <OverflowToolbarLayoutData
-                                    maxWidth="200px"
-                                    priority="NeverOverflow"/>
+                  maxWidth="200px"
+                  priority="NeverOverflow"
+                />
                             </layoutData>
                         </SearchField>
                     </OverflowToolbar>
@@ -64,25 +76,28 @@
                       <Text text="Código" id="codigoColumnLabel" />
                     </Column>
                     <Column id="descricaoColumn" hAlign="Left">
-                      <Text text="Produto" id="descricaoColumnLabel"/>
+                      <Text text="Produto" id="descricaoColumnLabel" />
                     </Column>
                     <Column id="kwmengColumn" hAlign="End">
-                      <Text text="Quantidade" id="kwmengColumnLabel"/>
+                      <Text text="Quantidade" id="kwmengColumnLabel" />
                     </Column>
                     <Column id="netprColumn" hAlign="End">
-                        <Text text="Preço Líquido" id="netprColumnLabel"/>
+                        <Text text="Preço Líquido" id="netprColumnLabel" />
                     </Column>
 
                     <Column id="dataCadastroColumn" hAlign="End">
-                        <Text text="Data Cadastro" id="dataCadastroLabel"/>
+                        <Text text="Data Cadastro" id="dataCadastroLabel" />
                     </Column>
 
                     <Column id="horaCadastroColumn" hAlign="End">
-                        <Text text="Hora Cadastro" id="horaCadastroLabel"/>
+                        <Text text="Hora Cadastro" id="horaCadastroLabel" />
                     </Column>
 
                     <Column hAlign="End">
-                      <Button icon="{= ${Aprovado} === true ? 'sap-icon://accept' : 'sap-icon://approve'}" press="onAprovarProduto" />
+                      <Button
+              icon="{= ${Aprovado} === true ? 'sap-icon://accept' : 'sap-icon://approve'}"
+              press="onAprovarProduto"
+            />
                     </Column>
                         <Column hAlign="End">
                       <Text text="Deletar" />
@@ -90,46 +105,56 @@
                 </columns>
 
                 <items>
-                    <ColumnListItem
-                        type="Navigation" 
-                        press=".onPress">
+                    <ColumnListItem type="Navigation" press=".onPress">
                         <cells>
-                            <ObjectIdentifier title="{Codigo}"/>
-                            <Text text="{Descricao}"/>
-                            <ObjectNumber 
-                            type='sap/ui/model/type/Decimal'
-                              number="{Kwmeng}"
-                              unit="{Meins}"
-                              state="{
+                            <ObjectIdentifier title="{Codigo}" />
+                            <Text text="{Descricao}" />
+                            <ObjectNumber
+                type='sap/ui/model/type/Decimal'
+                number="{Kwmeng}"
+                unit="{Meins}"
+                state="{
                                 parts: [
                                   {path: 'Kwmeng'}
                                 ],
                                 formatter: '.formatter.formatarValor'
                               }"
-                              />
-                            <ObjectNumber number="{
+              />
+                            <ObjectNumber
+                number="{
                                 path: 'Netpr',
                                 formatter: '.formatter.currencyUnit'
-                              }" 
-                                unit="{Waerk}" />
-                            <ObjectIdentifier title="{
+                              }"
+                unit="{Waerk}"
+              />
+                            <ObjectIdentifier
+                title="{
                               path: 'DataCadastro',
                               type: 'sap.ui.model.type.Date',
                               formatOptions: {
                                 style: 'short',
                                 UTC: true
                               }
-                            }" />
-                            <ObjectIdentifier title="{
+                            }"
+              />
+                            <ObjectIdentifier
+                title="{
                               path: 'HoraCadastro',
                               type: 'sap.ui.model.odata.type.Time',
                               formatOptions: {
                                 style: 'short',
-                                pattern: 'HH:MM'
+                                pattern: 'HH:MM:SS'
                               }
-                            }" />
-                            <Button icon="{= ${Aprovado} === true ? 'sap-icon://accept' : 'sap-icon://approve'}" press="onAprovarProduto" />
-                            <Button icon="sap-icon://delete"    press="onDeletar" />
+                            }"
+              />
+                            <Button
+                icon="{= ${Aprovado} === true ? 'sap-icon://accept' : 'sap-icon://approve'}"
+                press="onAprovarProduto"
+              />
+                            <Button
+                icon="sap-icon://delete"
+                press="onDeletar"
+              />
                         </cells>
                     </ColumnListItem>
                 </items>
@@ -137,7 +162,10 @@
         </semantic:content>
 
         <semantic:sendEmailAction>
-            <semantic:SendEmailAction id="shareEmail" press=".onShareEmailPress"/>
+            <semantic:SendEmailAction
+        id="shareEmail"
+        press=".onShareEmailPress"
+      />
         </semantic:sendEmailAction>
 
     </semantic:SemanticPage>
