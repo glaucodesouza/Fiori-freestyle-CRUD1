@@ -87,9 +87,9 @@ sap.ui.define(
           Netpr: this.byId("inpNetpr").getValue(),
           Waerk: this.byId("inpWaerk").getValue(),
           DataCadastro: this.byId("inpDataCadastro").getValue(),
-          //HoraCadastro: this.byId("inpHoraCadastro").getValue(),
+          HoraCadastro: this.byId("inpHoraCadastro").getValue(),
         };
-        debugger;
+
         // var dados = {
         //   //Codigo: this.byId("inpCodigo").getValue(),
         //   Descricao: "teste4",
@@ -143,8 +143,8 @@ sap.ui.define(
         var lv_Netpr = dados.Netpr.replace(".", "");
         lv_Netpr = lv_Netpr.replace(",", ".");
         dados.Netpr = lv_Netpr;
-        debugger;
 
+        //Formatar Data para o backend
         var lv_ano = dados.DataCadastro.substring(6, 10);
         var lv_mes = dados.DataCadastro.substring(3, 5);
         var lv_dia = dados.DataCadastro.substring(0, 2);
@@ -152,6 +152,11 @@ sap.ui.define(
         var lv_DataCadastro = lv_ano + "-" + lv_mes + "-" + lv_dia + "T00:00:00";
         dados.DataCadastro = lv_DataCadastro;
 
+        //Formatar Hora para o backend
+        var lv_hora = dados.HoraCadastro;
+        dados.HoraCadastro = "PT" + lv_hora.substring(0, 2) + "H" + lv_hora.substring(3, 5) + "M" + "00S";
+
+        debugger;
         oModel.create("/Z270FREECRUD1Set", dados, {
           success: function (oDados, response) {
             var lv_message = JSON.parse(response.headers["sap-message"]);
