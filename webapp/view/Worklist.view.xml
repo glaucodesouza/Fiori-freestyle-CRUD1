@@ -72,7 +72,7 @@
                 </headerToolbar>
 
                 <columns>
-                    <Column id="codigoColumn">
+                    <Column id="codigoColumn" hAlign="End">
                       <Text text="Código" id="codigoColumnLabel" />
                     </Column>
                     <Column id="descricaoColumn" hAlign="Left">
@@ -85,15 +85,23 @@
                         <Text text="Preço Líquido" id="netprColumnLabel" />
                     </Column>
 
-                    <Column id="dataCadastroColumn" hAlign="End">
+                    <Column
+            id="dataCadastroColumn"
+            hAlign="End"
+            importance="Low"
+          >
                         <Text text="Data Cadastro" id="dataCadastroLabel" />
                     </Column>
-                    <Column id="horaCadastroColumn" hAlign="End">
+                    <Column
+            id="horaCadastroColumn"
+            hAlign="End"
+            importance="Low"
+          >
                         <Text text="Hora Cadastro" id="horaCadastroLabel" />
                     </Column>
 
                     <Column id="AprovaCadastroColumn" hAlign="End">
-                      <Text text-="Aprovado" id="idAprovaCadastroColumn" />
+                      <Text text-="Aprovado" id="idAprovaCadastroColumn" /> 
                     </Column>
                     <Column id="DeletarCadastroColumn" hAlign="End">
                       <Text text="Deletar" id="idDeletarCadastroColumn" />
@@ -105,6 +113,7 @@
                         <cells>
                             <ObjectIdentifier title="{Codigo}" />
                             <Text text="{Descricao}" />
+                            
                             <ObjectNumber
                 number="{Kwmeng}"
                 unit="{Meins}"
@@ -123,7 +132,7 @@
                 unit="{Waerk}"
               />
                             <ObjectIdentifier
-                title="{
+                title="{ 
                               path: 'DataCadastro',
                               type: 'sap.ui.model.type.Date',
                               formatOptions: {
